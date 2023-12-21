@@ -41,6 +41,8 @@ def round_up(audio):
     rem = SAMPLE_RATE - audio.shape[1]%SAMPLE_RATE
     baggage = torch.zeros([1,rem], dtype=audio.dtype)
     audio = torch.cat((audio,baggage), 1)
+    while audio.shape[1] < SAMPLE_RATE*5:
+        audio = audio.repeat(1,2)
     return audio
 
 def same_dur_as(audio0, audio1):
@@ -72,7 +74,8 @@ def get_log_melSpectrogram(audio):
 def get_random_audioFeatures(audio):
     
     t_audio = (int)(audio.shape[1]/SAMPLE_RATE)
-    rand_sec = random.choice([i for i in range(0,t_audio-5)])
+    #rand_sec = random.choice([i for i in range(0,t_audio-5)])
+    rand_sec = 0
     start_sample = rand_sec*SAMPLE_RATE
     end_sample = (rand_sec+5)*SAMPLE_RATE
     log_mel_features = get_log_melSpectrogram(audio[:,start_sample:end_sample])
