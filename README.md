@@ -11,3 +11,6 @@ This repo has the code that:
 To investigate if this representation is good enough to train a general sound event classifier. 
 - We can also think of using the classifier to solve speech-related classification task such as Speaker Diarisation, Speaker gender recognition, speaker verification, etc. 
 - An idea also could be somehow integrate context into it, so that we can have a more accurate and crisp event classes to detect and recognise from.
+
+
+PS: I am also trying to rewrite the code in a cleaner manner. 
